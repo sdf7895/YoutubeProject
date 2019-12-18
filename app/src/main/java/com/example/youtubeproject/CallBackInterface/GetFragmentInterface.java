@@ -1,8 +1,9 @@
 package com.example.youtubeproject.CallBackInterface;
 
-import android.support.v4.app.Fragment;
+import com.example.youtubeproject.Model.YoutubePlayerList;
+import java.util.ArrayList;
+
 
 public interface GetFragmentInterface {
-    public void getSubActivity();
-    public void positionANDstate(int[] getPosition,int[] getState);
+    public void getSubActivity(ArrayList<YoutubePlayerList> setItems);
 }

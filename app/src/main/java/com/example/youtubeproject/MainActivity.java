@@ -21,14 +21,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.youtubeproject.CallBackInterface.GetFragmentInterface;
+import com.example.youtubeproject.Model.YoutubePlayerList;
 import com.example.youtubeproject.View.YoutubeMain;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GetFragmentInterface {
 
     private YoutubeMain youtubeMain;
-    int[] getPosition = new int[100];
-    int[] getState = new int[100];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,15 +136,9 @@ public class MainActivity extends AppCompatActivity
         startActivity(email);
     }
 
-    public void positionANDstate(int[] getPosition,int[] getState){
-        this.getPosition = getPosition;
-        this.getState = getState;
-    }
-
-    public void getSubActivity(){
+    public void getSubActivity(ArrayList<YoutubePlayerList> setItems){
         Intent intent = new Intent(getApplicationContext(),SubActivity.class);
-        intent.putExtra("position",getPosition);
-        intent.putExtra("state",getState);
+        intent.putParcelableArrayListExtra("items",setItems);
 
         startActivity(intent);
 

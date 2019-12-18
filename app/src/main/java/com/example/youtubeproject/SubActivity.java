@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.youtubeproject.CallBackInterface.SubActivityFinish;
+import com.example.youtubeproject.Model.YoutubePlayerList;
 import com.example.youtubeproject.View.YoutubeFragment;
 
-public class SubActivity extends AppCompatActivity implements SubActivityFinish {
+import java.util.ArrayList;
 
-    int[] getPosition = new int[100];
-    int[] getState = new int[100];
+public class SubActivity extends AppCompatActivity implements SubActivityFinish {
+    ArrayList<YoutubePlayerList> lists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +19,12 @@ public class SubActivity extends AppCompatActivity implements SubActivityFinish 
         setContentView(R.layout.activity_sub);
 
         if(getIntent() != null){
-           Intent intent = getIntent();
-           getPosition = intent.getExtras().getIntArray("position");
-           getState = intent.getExtras().getIntArray("state");
+           lists = getIntent().getParcelableArrayListExtra("items");
 
         }
 
         YoutubeFragment youtubeFragment = new YoutubeFragment();
-        youtubeFragment.positionANDstate(getPosition,getState);
+        youtubeFragment.setSelectLists(lists);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment,youtubeFragment).commit();
     }
 

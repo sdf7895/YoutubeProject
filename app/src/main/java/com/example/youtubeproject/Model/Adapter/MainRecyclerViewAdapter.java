@@ -19,25 +19,25 @@ import com.example.youtubeproject.Model.YoutubePlayerList;
 import com.example.youtubeproject.R;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder> {
     private Context context;
-    private List<YoutubePlayerList> items;
+    private ArrayList<YoutubePlayerList> items;
+    private ArrayList<YoutubePlayerList> setItems;
     private OnItemClickListener listener;
     private YoutubePlayerList youtubePlayerList;
-
-    int[] state = new int[100];
-    int[] getPosition = new int[100];
-    int[] getState = new int[100];
 
     public static interface OnItemClickListener {
         public void onItemClick(ViewHolder holder, View view, int position);
     }
 
-    public MainRecyclerViewAdapter(Context context, List<YoutubePlayerList> items) {
+    public MainRecyclerViewAdapter(Context context, ArrayList<YoutubePlayerList> items) {
         this.context = context;
         this.items = items;
+        setItems = new ArrayList<>();
     }
 
     @NonNull
@@ -117,9 +117,11 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
         if (youtubePlayerList.isState() == false) {
             youtubePlayerList.state = true;
+            setItems.add(new YoutubePlayerList(youtubePlayerList.getTitle(),youtubePlayerList.getUrl(),youtubePlayerList.getId(),youtubePlayerList.getDuration(),youtubePlayerList.isState()));
             notifyItemChanged(position);
         }else {
             youtubePlayerList.state = false;
+            setItems.remove(position);
             notifyItemChanged(position);
         }
     }
@@ -142,37 +144,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         }
     }
 
-    public int[] getPosition(){
-        int j =0;
-
-        for(int i =0; i < items.size(); i++){
-            if(state[i] == 1){
-                getPosition[j] = i;
-                j++;
-            }
-        }
-        return getPosition;
+    public ArrayList<YoutubePlayerList> getItems(){
+        return setItems;
     }
-
-    public int[] getState(){
-        int j =0;
-
-        for(int i =0; i < items.size(); i++){
-            if(state[i] == 1){
-                getState[j] = 1;
-                j++;
-            }
-        }
-        return getState;
-    }
-
-    public void addDelete(){
-        for(int i =0; i <items.size(); i++){
-            state[i] =0;
-            getPosition[i] = 0;
-            getState[i] = 0;
-            toggleItemSelected(i);
-        }
-    }
-
 }

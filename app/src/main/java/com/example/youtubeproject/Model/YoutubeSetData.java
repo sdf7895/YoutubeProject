@@ -5,8 +5,8 @@ import java.util.List;
 
 public class YoutubeSetData {
 
-    public List<YoutubePlayerList> youtubeSetData(){
-        List<YoutubePlayerList> lists = new ArrayList<>();
+    public ArrayList<YoutubePlayerList> youtubeSetData(){
+        ArrayList<YoutubePlayerList> lists = new ArrayList<>();
 
         lists.add(new YoutubePlayerList("다시사랑할수있을것처럼","http://i.ytimg.com/vi/SAp2_W14oUk/0.jpg","SAp2_W14oUk","4:27",false));
         lists.add(new YoutubePlayerList("실패없는 취향저격 사클 개띵곡","http://i.ytimg.com/vi/h7Xu3c_5S5s/0.jpg","h7Xu3c_5S5s","54:30",false));

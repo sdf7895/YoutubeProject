@@ -19,6 +19,8 @@ import com.example.youtubeproject.Model.YoutubePlayerList;
 import com.example.youtubeproject.R;
 import com.example.youtubeproject.Model.YoutubeSetData;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,9 +28,7 @@ public class SelectView extends Fragment {
     Button playButton;
     Button allSelectButton;
     MainRecyclerViewAdapter recyclerViewAdapter;
-
-    int[] getPosition = new int[100];
-    int[] getState = new int[100];
+    ArrayList<YoutubePlayerList> setItems;
 
     GetFragmentInterface callBack;
 
@@ -62,31 +62,42 @@ public class SelectView extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.select_view,container,false);
 
         YoutubeSetData youtubeSetData = new YoutubeSetData();
-        List<YoutubePlayerList> lists = youtubeSetData.youtubeSetData();
+        ArrayList<YoutubePlayerList> lists = youtubeSetData.youtubeSetData();
 
         final RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
         playButton = rootView.findViewById(R.id.playButton);
         allSelectButton = rootView.findViewById(R.id.allButton);
         recyclerViewAdapter = new MainRecyclerViewAdapter(getContext(),lists);
 
+        setItems =  recyclerViewAdapter.getItems();
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recyclerViewAdapter);
 
+        playButton();
+        setAllSelectButton();
+
+
+        return rootView;
+    }
+
+    private void playButton(){
+
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getState = recyclerViewAdapter.getState();
-                getPosition = recyclerViewAdapter.getPosition();
-                callBack.positionANDstate(getPosition,getState);
-                if(getState[0] != 0){
-                   callBack.getSubActivity();
-                    recyclerViewAdapter.addDelete();
+                if(setItems.size() != 0){
+                    callBack.getSubActivity(setItems);
+                    recyclerViewAdapter.clearSelectedItem();
                 }else{
                     Toast.makeText(getContext(), "동영상을선택해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void setAllSelectButton(){
 
         allSelectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +114,5 @@ public class SelectView extends Fragment {
             }
         });
 
-        return rootView;
     }
 }

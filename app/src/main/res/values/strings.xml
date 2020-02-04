@@ -13,4 +13,21 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    -----------------------------------YoutubeToolbarName----------------------------
+    <string name="youtube_play">YoutubePlay</string>
+    <string name="settings">환경설정</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="todo">TODO</string>
+
+    -----------------------------------TabPagerName----------------------------------
+    <string name="popularity_ranking">인기순위</string>
+    <string name="favorites">즐겨찾기</string>
+
+    -----------------------------------Dialog----------------------------
+    <string name="youtube_explanation">유튜브 컨텐츠 어플</string>
+    <string name="notice">종료하시겠습니까?</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+
 </resources>

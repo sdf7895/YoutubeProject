@@ -7,8 +7,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/item_selector"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/item_selector">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -20,14 +21,12 @@
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="70dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp" />
+                android:layout_height="60dp"/>
 
             <LinearLayout
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -44,8 +43,7 @@
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -62,8 +60,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/favorit_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/favorites_selector"/>
 
             </LinearLayout>
 

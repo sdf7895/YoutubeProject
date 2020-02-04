@@ -7,10 +7,20 @@
         <item
             android:id="@+id/nav_1"
             android:icon="@drawable/ic_menu_camera"
-            android:title="문의하기"/>
+            android:title="문의하기" />
         <item
             android:id="@+id/nav_2"
             android:icon="@drawable/ic_menu_gallery"
             android:title="정보" />
+
     </group>
+
+    <item android:title="설정">
+        <menu>
+            <item
+                android:id="@+id/nav_3"
+                android:icon="@drawable/ic_menu_share"
+                android:title="환경설정" />
+        </menu>
+    </item>
 </menu>
